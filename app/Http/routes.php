@@ -31,7 +31,7 @@ Route::post('subscribe', function () {
 });
 
 Route::get('testing', function () {
-    dd(Auth::user()->everSubscribed());
+    dd(Auth::user()->onGracePeriod());
 });
 
 Route::get('swap', function () {
@@ -44,4 +44,10 @@ Route::get('coupon', function() {
     Auth::user()->applyCoupon('special');
 
     return 'Coupon applied';
+});
+
+Route::get('cancel', function () {
+    Auth::user()->subscription()->cancel();
+
+    return 'Cancelled';
 });
