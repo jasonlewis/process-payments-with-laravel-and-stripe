@@ -17,3 +17,15 @@ Route::post('/', function () {
 
     return 'Charged';
 });
+
+Route::get('subscribe', function () {
+    $user = Auth::user();
+
+    return view('subscribe', compact('user'));
+});
+
+Route::post('subscribe', function () {
+    Auth::user()->subscription('monthlyPremium')->create(Input::get('stripeToken'));
+
+    return 'Subscribed for one premium month';
+});
