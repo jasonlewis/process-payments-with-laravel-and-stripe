@@ -14,7 +14,17 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call(UserTableSeeder::class);
+        App\User::truncate();
+        App\Cart::truncate();
+        App\Product::truncate();
+
+        factory(App\Product::class, 10)->create();
+
+        factory(App\User::class, 10)->create()->each(function ($user) {
+            $user->cart()->saveMany(
+                factory(App\Cart::class, 2)->make()
+            );
+        });
 
         Model::reguard();
     }
