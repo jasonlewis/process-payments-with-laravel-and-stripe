@@ -33,3 +33,9 @@ Route::post('subscribe', function () {
 Route::get('testing', function () {
     dd(Auth::user()->everSubscribed());
 });
+
+Route::get('swap', function () {
+    Auth::user()->subscription('monthly')->swapAndInvoice();
+
+    return 'Swapped to monthly';
+});
