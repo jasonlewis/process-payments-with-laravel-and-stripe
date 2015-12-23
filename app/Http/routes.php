@@ -66,3 +66,12 @@ Route::get('invoice/{id}', function ($id) {
         'product' => 'Subscription'
     ]);
 });
+
+Route::get('invoice/{id}/download', function ($id) {
+    $invoice = Auth::user()->findInvoiceOrFail($id);
+
+    return $invoice->download([
+        'vendor' => 'My Cool Store',
+        'product' => 'Subscription'
+    ]);
+});
