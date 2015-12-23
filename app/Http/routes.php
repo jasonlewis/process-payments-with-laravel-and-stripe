@@ -29,3 +29,7 @@ Route::post('subscribe', function () {
 
     return 'Subscribed for one premium month';
 });
+
+Route::get('testing', function () {
+    dd(Auth::user()->everSubscribed());
+});
