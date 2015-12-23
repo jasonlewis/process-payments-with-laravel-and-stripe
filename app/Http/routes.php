@@ -1,6 +1,6 @@
 <?php
 
-Auth::loginUsingId(2);
+Auth::loginUsingId(1);
 
 Route::get('/', function () {
     $user = Auth::user();
@@ -38,4 +38,10 @@ Route::get('swap', function () {
     Auth::user()->subscription('monthly')->swapAndInvoice();
 
     return 'Swapped to monthly';
+});
+
+Route::get('coupon', function() {
+    Auth::user()->applyCoupon('special');
+
+    return 'Coupon applied';
 });
