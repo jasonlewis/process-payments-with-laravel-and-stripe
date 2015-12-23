@@ -57,3 +57,12 @@ Route::get('invoices', function () {
 
     return view('invoices', compact('invoices'));
 });
+
+Route::get('invoice/{id}', function ($id) {
+    $invoice = Auth::user()->findInvoiceOrFail($id);
+
+    return $invoice->view([
+        'vendor' => 'My Cool Store',
+        'product' => 'Subscription'
+    ]);
+});
