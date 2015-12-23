@@ -1,6 +1,6 @@
 <?php
 
-Auth::loginUsingId(1);
+Auth::loginUsingId(2);
 
 Route::get('/', function () {
     $user = Auth::user();
@@ -25,7 +25,7 @@ Route::get('subscribe', function () {
 });
 
 Route::post('subscribe', function () {
-    Auth::user()->subscription('monthlyPremium')->create(Input::get('stripeToken'));
+    Auth::user()->subscription('monthlyPremium')->withCoupon('special')->create(Input::get('stripeToken'));
 
     return 'Subscribed for one premium month';
 });
