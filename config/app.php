@@ -110,6 +110,8 @@ return [
 
     'providers' => [
 
+        Laravel\Cashier\CashierServiceProvider::class,
+
         /*
          * Laravel Framework Service Providers...
          */
