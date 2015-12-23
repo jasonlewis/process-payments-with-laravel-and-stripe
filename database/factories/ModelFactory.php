@@ -19,3 +19,20 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Product::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->randomElement([
+            'Xbox', 'PlayStation', 'Nintendo 64', 'Super Nintendo',
+            'Sega', 'GameBoy', '3DS'
+        ]),
+        'price' => $faker->randomFloat(2, 50, 500)
+    ];
+});
+
+$factory->define(App\Cart::class, function (Faker\Generator $faker) {
+    return [
+        'product_id' => $faker->numberBetween(1, 10),
+        'quantity' => $faker->numberBetween(1, 3)
+    ];
+});
