@@ -51,3 +51,9 @@ Route::get('cancel', function () {
 
     return 'Cancelled';
 });
+
+Route::get('invoices', function () {
+    $invoices = Auth::user()->invoices();
+
+    return view('invoices', compact('invoices'));
+});
